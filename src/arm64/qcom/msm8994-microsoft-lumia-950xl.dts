@@ -12,7 +12,7 @@
 
 /dts-v1/;
 
-#include "msm8994-v2.0.dtsi"
+#include "msm8994-v2.1.dtsi"
 #include "msm8994-pinctrl.dtsi"
 #include "msm8994-mtp.dtsi"
 
