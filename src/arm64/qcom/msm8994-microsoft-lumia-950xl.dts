@@ -21,3 +21,11 @@
 	compatible = "microsoft,rm-1085", "qcom,msm8994-mtp", "qcom,msm8994", "qcom,mtp";
 	qcom,board-id = <8 0>;
 };
+
+&pcie0 {
+	status = "ok";
+};
+
+&pcie1 {
+	status = "disabled";
+};

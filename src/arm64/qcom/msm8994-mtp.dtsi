@@ -76,11 +76,11 @@
 };
 
 &ufsphy1 {
-	status = "ok";
+	status = "disabled";
 };
 
 &ufs1 {
-	status = "ok";
+	status = "disabled";
 };
 
 &pm8994_vadc {
@@ -697,7 +697,7 @@
 };
 
 &pcie0 {
-	status = "disabled";
+	status = "ok";
 };
 
 &usb3 {
