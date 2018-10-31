@@ -240,6 +240,22 @@
 				 <&clock_gcc GCC_BLSP1_AHB_CLK>;
 		};
 
+		blsp1_i2c1: i2c@f9923000 {
+			compatible = "qcom,i2c-qup-v2.2.1";
+			reg = <0xf9923000 0x1000>;
+			interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
+			clocks = <&clock_gcc GCC_BLSP1_AHB_CLK>,
+				 <&clock_gcc GCC_BLSP1_QUP1_I2C_APPS_CLK>;
+			clock-names = "iface", "core";
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&i2c1_default>;
+			pinctrl-1 = <&i2c1_sleep>;
+			clock-frequency = <400000>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "disabled";
+		};
+
 		sdhc1: sdhci@f9824900 {
 			status = "disabled";
 			compatible = "qcom,sdhci-msm-v4";
