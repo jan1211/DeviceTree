@@ -14,6 +14,10 @@
  /dts-v1/;
 
 #include "msm8994.dtsi"
+#include "pm8994.dtsi"
+#include "pmi8994.dtsi"
+#include "msm8994-microsoft-lumia-950xl-pmic-pins.dtsi"
+#include <dt-bindings/gpio/gpio.h>
 
 / {
 	model = "Microsoft Lumia 950 XL Single SIM (RM-1085)";
@@ -23,7 +27,21 @@
 
 	aliases {
 		serial0 = &blsp1_uart2;
+		serial1 = &blsp2_uart2;
+		serial2 = &blsp1_uart3;
 		i2c1 = &blsp1_i2c1;
+	};
+
+	clocks {
+		divclk4: divclk4 {
+			compatible = "fixed-clock";
+			#clock-cells = <0>;
+			clock-frequency = <32768>;
+			clock-output-names = "divclk4";
+
+			pinctrl-names = "default";
+			pinctrl-0 = <&divclk4_pin_a>;
+		};
 	};
 
 	soc {
@@ -34,6 +52,23 @@
 			pinctrl-1 = <&blsp1_uart2_sleep>;
 		};
 
+		serial@f995e000 {
+			label = "BT-UART";
+			status = "okay";
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&blsp2_uart2_default>;
+			pinctrl-1 = <&blsp2_uart2_sleep>;
+
+			bluetooth {
+				compatible = "qcom,qca6174-bt";
+
+				/* bt_disable_n gpio */
+				enable-gpios = <&pm8994_gpios 19 GPIO_ACTIVE_HIGH>;
+
+				clocks = <&divclk4>;
+			};
+		};
+
 		i2c@f9923000 {
 			status = "okay";
 
@@ -42,6 +77,9 @@
 				reg = <0x4b>;
 				#address-cells = <1>;
 				#size-cells = <0>;
+
+				interrupt-parent = <&msmgpio>;
+				interrupts = <77 IRQ_TYPE_EDGE_FALLING>;
 
 				rmi4-f01@1 {
 					reg = <0x01>;
