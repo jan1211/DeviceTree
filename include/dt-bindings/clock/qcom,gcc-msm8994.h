@@ -135,4 +135,27 @@
 #define GCC_USB_HS_SYSTEM_CLK			117
 #define GCC_SDCC1_AHB_CLK			118
 
+/* LDO Gate clocks */
+#define GCC_PCIE_0_PHY_LDO_EN_CLK 119
+#define GCC_PCIE_1_PHY_LDO_EN_CLK 120
+
+/* PCI Express mis clocks */
+#define GCC_PCIE_0_SLV_AXI_CLK 121
+#define GCC_PCIE_0_MSTR_AXI_CLK 122
+#define GCC_PCIE_0_CFG_AHB_CLK 123
+
+#define GCC_PCIE_1_SLV_AXI_CLK 127
+#define GCC_PCIE_1_MSTR_AXI_CLK 128
+#define GCC_PCIE_1_CFG_AHB_CLK 129
+
+/* Resets */
+#define GCC_PCIE_PHY_0_BCR 130
+#define GCC_PCIE_PHY_0_PHY_BCR 131
+#define GCC_PCIE_PHY_1_BCR 132
+#define GCC_PCIE_PHY_1_PHY_BCR 133
+
+/* GDSC */
+#define GCC_PCIE_0_GDSC 134
+#define GCC_PCIE_1_GDSC 135
+
 #endif
