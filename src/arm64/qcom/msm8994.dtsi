@@ -382,7 +382,7 @@
 				"mstr_axi_clk",
 				"phy_ldo_clk";
 
-			resets = <&gcc GCC_PCIE_PHY_1_PHY_BCR>;
+			resets = <&clock_gcc GCC_PCIE_PHY_1_PHY_BCR>;
 			reset-names = "phy_reset";
 			status = "disabled";
 		};
