@@ -104,5 +104,5 @@
 };
 
 &pcie1 {
-	status = "okay";
+	status = "disabled";
 };
