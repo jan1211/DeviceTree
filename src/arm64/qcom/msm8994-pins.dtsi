@@ -87,7 +87,7 @@
 	pcie1_clkreq_default: pcie1_clkreq_default {
 		mux {
 			pins = "gpio36";
-			function = "pci_e0";
+			function = "pci_e1";
 		};
 
 		config {
