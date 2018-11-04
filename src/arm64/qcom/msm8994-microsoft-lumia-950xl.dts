@@ -102,3 +102,7 @@
 &sdhc1 {
 	status = "okay";
 };
+
+&pcie1 {
+	status = "okay";
+};

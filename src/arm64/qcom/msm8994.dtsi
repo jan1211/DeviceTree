@@ -337,6 +337,55 @@
 			compatible = "qcom,rpm-msg-ram";
 			reg = <0xfc428000 0x4000>;
 		};
+
+		pcie1: pcie1@fc528000 {
+			compatible = "qcom,pcie-msm8994", "snps,dc-pcie";
+			reg = <0xfc528000 0x2000>,
+				<0xfc52e000 0x1000>,
+				<0xf8800000 0xf1d>,
+				<0xf8800f20 0xa8>,
+		    	<0xf8801000 0x7f000>;
+			reg-names = "parf", "altphy", "dbi", "elbi","config";
+
+			#address-cells = <3>;
+			#size-cells = <2>;
+			ranges = <0x01000000 0x0 0xf8880000 0xf8880000 0x0 0x80000>,
+				<0x02000000 0x0 0xf8900000 0xf8900000 0x0 0x700000>;
+			interrupts = <GIC_SPI 271 IRQ_TYPE_LEVEL_HIGH>;
+			interrupt-names = "msi";
+			#interrupt-cells = <1>;
+			interrupt-map-mask = <0 0 0 0x7>;
+			interrupt-map = <0 0 0 1 &intc 0 272 IRQ_TYPE_LEVEL_HIGH>, /* int_a */
+					<0 0 0 2 &intc 0 273 IRQ_TYPE_LEVEL_HIGH>, /* int_b */
+					<0 0 0 3 &intc 0 274 IRQ_TYPE_LEVEL_HIGH>, /* int_c */
+					<0 0 0 4 &intc 0 275 IRQ_TYPE_LEVEL_HIGH>; /* int_d */
+
+			pinctrl-names = "default";
+			pinctrl-0 = <&pcie1_clkreq_default &pcie1_perst_default &pcie1_wake_default>;
+
+			vreg-1.8-supply = <&pm8994_l12>;
+			vreg-0.9-supply = <&pm8994_l28>;
+
+			linux,pci-domain = <1>;
+
+			clocks = <&clock_gcc GCC_PCIE_1_PIPE_CLK>,
+				<&rpmcc RPM_SMD_LN_BB_CLK>,
+				<&clock_gcc GCC_PCIE_1_AUX_CLK>,
+				<&clock_gcc GCC_PCIE_1_CFG_AHB_CLK>,
+				<&clock_gcc GCC_PCIE_1_MSTR_AXI_CLK>,
+				<&clock_gcc GCC_PCIE_1_PHY_LDO_EN_CLK>;
+
+			clock-names = "pipe_clk",
+				"ref_clk_src",
+				"aux_clk",
+				"cfg_ahb_clk",
+				"mstr_axi_clk",
+				"phy_ldo_clk";
+
+			resets = <&gcc GCC_PCIE_PHY_1_PHY_BCR>;
+			reset-names = "phy_reset";
+			status = "disabled";
+		};
 	};
 
 	smd {
