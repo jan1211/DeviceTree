@@ -154,8 +154,27 @@
 #define GCC_PCIE_PHY_1_BCR 132
 #define GCC_PCIE_PHY_1_PHY_BCR 133
 
-/* GDSC */
-#define GCC_PCIE_0_GDSC 134
-#define GCC_PCIE_1_GDSC 135
+/* Indexes for GDSCs */
+#define VENUS_GDSC 0
+#define VENUS_CORE0_GDSC 1
+#define VENUS_CORE1_GDSC 2
+#define VPU_GDSC 3
+#define CAMSS_TOP_GDSC 4
+#define MDSS_GDSC 5
+#define JPEG_GDSC 6
+#define VFE_GDSC 7
+#define CPP_GDSC 8
+#define OXILI_GX_GDSC 9
+#define OXILI_CX_GDSC 10
+#define HSIC_GDSC 11
+#define PCIE_GDSC 12
+#define PCIE0_GDSC 13
+#define PCIE1_GDSC 14
+#define USB30_GDSC 15
+#define USB30_SEC_GDSC 16
+#define VCAP_GDSC 17
+#define BCSS_GDSC 18
+#define UFS_GDSC 19
+#define FD_GDSC 20
 
 #endif
